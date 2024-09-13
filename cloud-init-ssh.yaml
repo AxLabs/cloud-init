@@ -1,0 +1,25 @@
+#cloud-config
+package_update: true
+
+runcmd:
+  - apt-get update -y
+  - apt-get upgrade -y
+
+write_files:
+  - path: /etc/ssh/sshd_config.d/99-custom.conf
+    content: |
+      # Support public key cryptography (includes FIDO2)
+      PubkeyAuthentication yes
+      # Enforce User Verification
+      PubkeyAuthOptions verify-required
+      # Public keys location
+      AuthorizedKeysFile .ssh/authorized_keys
+      # Allow root only with MFA
+      PermitRootLogin prohibit-password
+      # Disable password authentication
+      PasswordAuthentication no
+      PermitEmptyPasswords no
+    append: true
+
+runcmd:
+  - systemctl restart sshd

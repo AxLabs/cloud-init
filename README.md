@@ -1,2 +1,3 @@
-# cloud-init
-Public cloud-init files for VMs
+# AxLabs: cloud-init scripts
+
+Public cloud-init files for VMs.
