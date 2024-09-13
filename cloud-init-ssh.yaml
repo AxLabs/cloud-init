@@ -2,6 +2,7 @@
 package_update: true
 
 runcmd:
+  - echo "Running cloud-init-ssh.yaml"
   - apt-get update -y
   - apt-get upgrade -y
 

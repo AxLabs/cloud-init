@@ -1,5 +1,8 @@
 #cloud-config
+package_update: true
+
 runcmd:
+  - echo "Running cloud-init-swap-config.yaml"
   - fallocate -l 2G /swapfile  # Creates a 2GB swap file
   - chmod 600 /swapfile        # Set the correct permissions for the swap file
   - mkswap /swapfile           # Set up the swap file
