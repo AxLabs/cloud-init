@@ -1,13 +1,10 @@
 #cloud-config
-package_update: true
-
 runcmd:
-  - echo "Running cloud-init-swap-config.yaml"
-  - fallocate -l 2G /swapfile  # Creates a 2GB swap file
-  - chmod 600 /swapfile        # Set the correct permissions for the swap file
-  - mkswap /swapfile           # Set up the swap file
-  - swapon /swapfile           # Enable the swap file
-  - echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab  # Make swap permanent by adding it to fstab
-# Optional: Set swappiness to 40 to reduce swap usage (default is 60)
-  - sysctl vm.swappiness=40
-  - echo 'vm.swappiness=40' | tee -a /etc/sysctl.conf
+  - |
+    fallocate -l 2G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+    sysctl vm.swappiness=40
+    echo 'vm.swappiness=40' | tee -a /etc/sysctl.conf
