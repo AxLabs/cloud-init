@@ -15,4 +15,12 @@ This is what you'll need to input in your Cloud's cloud-init script:
   - https://raw.githubusercontent.com/AxLabs/cloud-init/main/cloud-init-swap-config.yaml
 ```
 
+or
+
+```
+#include
+https://raw.githubusercontent.com/AxLabs/cloud-init/main/cloud-init-ssh.yaml
+https://raw.githubusercontent.com/AxLabs/cloud-init/main/cloud-init-swap-config.yaml
+```
+
 If you would like to add/remove scripts, add them as an URL.
